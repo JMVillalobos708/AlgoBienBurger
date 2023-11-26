@@ -1,0 +1,256 @@
+body{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("../imgs/elmasburguer.jpg");
+    background-repeat: repeat;
+    background-position: center;
+    background-size: 25%;
+
+
+}
+
+.wrapper{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.sign-in-card > .card-title{
+    text-align: center;
+    color: #fff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20px;
+}
+.sign-in-card{
+    width: 450px;
+    height: 500px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #ddb74d;
+}
+
+.sign-in-card > .card-content{
+    padding: 10px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+}
+.card-content form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+form input{
+    margin-bottom: 10px;
+}
+
+.card-actions{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.card-actions > button{
+    height: 32px;
+    border: none;
+    color: #ffff;
+    background-color: #c26a37;
+}
+.card-actions > button:hover{
+    cursor: pointer;
+    background-color: #d87339;
+}
+.card-title{
+    margin-top: 0;
+    top: 0;
+}
+.card-content > form > input {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    height: 32px;
+    padding-left: 12px;
+    border-radius: 5px;
+    border: none;
+    color: #ffff;
+    background-color: transparent;
+    border-bottom: 3px solid #be5d30;
+}
+.card-content > form > input::placeholder {
+    color: #ffffff;
+}
+.card-content > form > input:focus {
+    outline: none;
+    background-color: transparent; 
+    border-bottom: 3px solid #2970CA
+}
+
+hr{
+    border: 1px solid rgb(247, 144, 61);
+    width: 95%;
+}
+
+  
+// Learn about this solution to creating custom select styles:
+// @link https://moderncss.dev/custom-select-styles-with-pure-css/
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --select-border: #777;
+  --select-focus: blue;
+  --select-arrow: var(--select-border);
+}
+select:focus{
+    outline: none;
+}
+select {
+  // A reset of styles, including removing the default dropdown arrow
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  padding: 0 1em 0 0;
+  margin: 0;
+  width: 100%;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: inherit;
+  line-height: inherit;
+
+  // Stack above custom arrow
+  z-index: 1;
+
+  // Remove dropdown arrow in IE10 & IE11
+  // @link https://www.filamentgroup.com/lab/select-css.html
+  &::-ms-expand {
+    display: none;
+  }
+
+  // Remove focus outline, will add on alternate element
+  outline: none;
+}
+
+.select {
+  display: grid;
+  grid-template-areas: "select";
+  align-items: center;
+  position: relative;
+
+  select,
+  &::after {
+    grid-area: select;
+  }
+
+  min-width: 15ch;
+  max-width: 30ch;
+  min-height: 2ch;
+  max-height: 3ch;
+
+  border: 1px solid var(--select-border);
+  border-radius: 0.25em;
+  padding: 0.25em 0.5em;
+
+  font-size: 0.95rem;
+  cursor: pointer;
+  line-height: 1.1;
+
+  // Optional styles
+  // remove for transparency
+  background-color: #fff;
+  background-image: linear-gradient(to top, #f9f9f9, #fff 33%);
+
+  // Custom arrow
+  &:not(.select--multiple)::after {
+    content: "";
+    justify-self: end;
+    width: 0.8em;
+    height: 0.5em;
+    background-color: var(--select-arrow);
+    clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+  }
+}
+
+// Interim solution until :focus-within has better support
+select:focus + .focus {
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  right: -1px;
+  bottom: -1px;
+  border: 2px solid var(--select-focus);
+  border-radius: inherit;
+}
+
+select[multiple] {
+  padding-right: 0;
+
+  /*
+   * Safari will not reveal an option
+   * unless the select height has room to 
+   * show all of it
+   * Firefox and Chrome allow showing 
+   * a partial option
+   */
+  height: 6rem;
+
+  option {
+    white-space: normal;
+
+    // Only affects Chrome
+    outline-color: var(--select-focus);
+  }
+
+  /* 
+   * Experimental - styling of selected options
+   * in the multiselect
+   * Not supported crossbrowser
+   */
+  //   &:not(:disabled) option {
+  //     border-radius: 12px;
+  //     transition: 120ms all ease-in;
+
+  //     &:checked {
+  //       background: linear-gradient(hsl(242, 61%, 76%), hsl(242, 61%, 71%));
+  //       padding-left: 0.5em;
+  //       color: black !important;
+  //     }
+  //   }
+}
+
+.select--disabled {
+  cursor: not-allowed;
+  background-color: #eee;
+  background-image: linear-gradient(to top, #ddd, #eee 33%);
+}
+
+label {
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+
+.select + label {
+  margin-top: 2rem;
+}
+
+body {
+  min-height: 100vh;
+  display: grid;
+  place-content: center;
+  grid-gap: 0.5rem;
+  font-family: "Baloo 2", sans-serif;
+  background-color: #e9f2fd;
+  padding: 1rem;
+}

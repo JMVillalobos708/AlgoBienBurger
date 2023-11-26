@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./src/css/sign-in.css">
+  <link rel="shortcut icon" href="./src/imgs/burguer.png" type="image/x-icon">
+  <title>AlgoBienBurguer  - SignUp</title>
+</head>
+<html>
+<body>
+    <div class="wrapper">
+        <div class="sign-in-card">
+            <div class="card-title">
+              <h1><strong>Sign-Up</strong></h1>
+            </div>
+            <hr>
+            <div class="card-content">
+                <form onsubmit="preventDefault()">
+                  <input id="userNameInput" type="text" placeholder="Username">
+                  <input id="nameInput" type="text" placeholder="Nombre">
+                  <input id="emailInput" type="email" placeholder="Correo">
+                  <input id="passwordInput" type="password" placeholder="Password">
+                  <select class="select" id="typeInput">
+                    <option value="0">Administrador</option>
+                    <option value="1">Mesero</option>
+                    <option value="2">Cocinero</option>
+                  </select>
+                </form>
+            </div>
+            <div class="card-actions">
+              <button id="submitBtn">Sign-Up</button>
+              <button id="mostrarUsuarios" style="margin-top: 5px;">Mostrar Users</button>
+            </div>
+        </div>
+    </div>
+    <script>
+
+      const btnMostrarUsers = document.getElementById("mostrarUsuarios");
+      btnMostrarUsers.addEventListener('click', async (e) =>{
+        e.preventDefault();
+      
+
+        const apiUrl = 'http://127.0.0.1:5200/api/user'; // Reemplaza con la ruta correcta
+
+        // Realiza una solicitud GET al servidor
+        fetch(apiUrl)
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error('La solicitud al servidor no se completó correctamente');
+            }
+            return response.json();
+          })
+          .then((data) => {
+            // Haz algo con los datos obtenidos, por ejemplo, mostrarlos en la página
+   
+            data.forEach(e =>{
+              console.info(`Nombre: ${e.id_usuario} Password: ${e.contrasenia}`);
+            })
+          })
+          .catch((error) => {
+            console.error('Error al obtener datos del servidor:', error);
+          });
+      })
+      <!-- OTRO -->
+      const btnSubmit = document.getElementById("submitBtn");
+      btnSubmit.addEventListener('click', async (e) =>{
+        console.info("Hello world");
+        e.preventDefault();
+        const userNameInput = document.getElementById('userNameInput').value;
+        const nameInput = document.getElementById('nameInput').value;
+        const emailInput = document.getElementById('emailInput').value;
+        const passwordInput = document.getElementById('passwordInput').value;
+        const typeInput = parseInt(document.getElementById('typeInput').value);
+
+        try{
+          const response = await fetch('http://127.0.0.1:5200/api/user', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({userNameInput, nameInput, emailInput, passwordInput, typeInput}),
+          });
+          if (!response.ok){
+            throw new Error(`Error ${response.status}`);
+          }
+
+
+
+
+        }catch (error){
+          console.error(error);
+        }
+        
+
+      })
+
+    </script>
+</body>
+</html>

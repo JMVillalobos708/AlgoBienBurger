@@ -1,0 +1,12 @@
+.dashboard{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    padding: 95px 35px;
+}
+
+.table-wrapper{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}

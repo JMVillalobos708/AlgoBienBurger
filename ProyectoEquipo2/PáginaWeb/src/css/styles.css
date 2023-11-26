@@ -1,0 +1,156 @@
+* {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    background-color: #fff;
+    height: 100vh;
+}
+
+.conenedor {
+    height: 100%;
+}
+
+.cabecera {
+    display: flex;
+    flex-direction: row;
+    background-color: #f8f9fa !important;
+    padding: 15px;
+    height: 45px;
+}
+
+.contenedor-titulo {
+    flex: 1;
+}
+
+.lista-menu {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+}
+
+.lista-menu>li {
+    margin: 10px 15px;
+}
+
+.contenido {
+    padding: 15px;
+    display: flex;
+    flex-direction: row;
+    height: calc(100vh - 105px);
+}
+
+.texto {
+    width: 60%;
+    margin-right: 15px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.texto p {
+    font-size: 1.5em;
+    text-align: justify;
+}
+
+.formulario {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.formulario form {
+    display: flex;
+    flex-direction: column;
+    background-color: red;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, .125);
+    padding: 15px 0;
+    width: 100%;
+}
+
+.formulario form label {
+    text-align: center;
+    width: 100%;
+}
+
+.formulario div {
+    display: flex;
+    flex-direction: column;
+}
+
+.formulario div:after {
+    background-color: red;
+
+}
+
+.formulario div input[type='submit'] {
+    margin-top: 15px;
+    text-align: center;
+    align-self: center;
+    width: 100px;
+}
+
+table,
+th,
+td {
+    border: 1px solid black;
+}
+.contenedor-lista{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.contenedor-lista div:first-child{
+    display: flex;
+}
+.contenedor-lista div:first-child h2{
+    flex: 1;
+}
+.contenedor-lista div:first-child .agregar-boton{
+    padding: 8px 12px;
+    margin-bottom: 15px;
+    border: thin solid black;
+}
+#lista-de-productos {
+    width: 100%;
+}
+tr > td{
+    margin-left: 15px;
+}
+.contenedor-agregar-formulario{
+    width: 100%;
+}
+.contenedor-agregar-formulario form{
+    width: 60%;
+}
+.contenedor-agregar-formulario fieldset{
+    padding: 15px;
+}
+.contenedor-campo{
+    display: flex;
+    justify-content: space-between;
+}
+.contenedor-campo:not(:last-child){
+    margin-bottom: 15px;
+}
+.contenedor-campo input{
+    width: 80%;
+}
+.campo-boton-enviar input{
+    width: 100px;
+}
