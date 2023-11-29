@@ -18,52 +18,54 @@ async function obtenerPedidos() {
         throw error; // Propaga el error para que pueda ser manejado en la función loadOntable
     }
 }
-const datos = await obtenerPedidos();
+async function construirYAgregarTabla() {
+    try {
+        const datos = await obtenerPedidos();
 
-//const datos = [{id_cuenta: 1, nombre_p: 'caca', precio_p: 200, cantidad: 3, bol_pago: false, fecha: '2024/03/2024'}]; 
+        //const datos = [{id_cuenta: 1, nombre_p: 'caca', precio_p: 200, cantidad: 3, bol_pago: false, fecha: '2024/03/2024'}]; 
 
-const tablaContainer = document.getElementById('datatablesSimple');
-
-// Configurar el idioma a español
-const idiomaEspanol = {
-    'search': 'Buscar:',
-    'previous': 'Anterior',
-    'next': 'Siguiente',
-    'last': 'Último',
-    'first': 'Primero',
-    'info': 'Mostrando _START_ a _END_ de _TOTAL_ entradas',
-    'empty': 'No hay datos disponibles',
-    'emptyTable': 'No hay datos disponibles en la tabla',
-};
-
-// Crear la tabla con simple-datatables
-const tabla = new simpleDatatables.DataTable(tablaContainer, {
-    data: {
-        headings: ['ID', 'Nombre', 'Precio', 'Cantidad', 'Bol_pago', 'Fecha', 'Pagar'],
-        data: datos.map(({ id_cuenta, nombre_p, precio_p, cantidad, bol_pago, fecha, tool }) => {
-            // Agregar un botón de acción (Editar) a cada fila
-            const button = `<button class="btn-pagado" onclick="cambiarEstadoBoleta(${id_cuenta})">Pagar</button>`;
-            
-            return [id_cuenta, nombre_p, precio_p, cantidad, bol_pago ? "Pagada" : "No pagada", fecha, button];
-        }),
-    },
-    language: idiomaEspanol,
-});
-
-// Puedes personalizar la configuración según tus necesidades
-// Por ejemplo, si deseas habilitar la búsqueda:
-// const tabla = new simpleDatatables.DataTable(tablaContainer, { search: true });
-
-
-} catch (error) {
-console.error('Error al construir y agregar la tabla:', error);
-
-const tablaContainer = document.getElementById('datatablesSimple');
-
-if (tablaContainer) {
-    new simpleDatatables.DataTable(tablaContainer);
-}
-}
+        const tablaContainer = document.getElementById('datatablesSimple');
+    
+        // Configurar el idioma a español
+        const idiomaEspanol = {
+            'search': 'Buscar:',
+            'previous': 'Anterior',
+            'next': 'Siguiente',
+            'last': 'Último',
+            'first': 'Primero',
+            'info': 'Mostrando _START_ a _END_ de _TOTAL_ entradas',
+            'empty': 'No hay datos disponibles',
+            'emptyTable': 'No hay datos disponibles en la tabla',
+        };
+    
+        // Crear la tabla con simple-datatables
+        const tabla = new simpleDatatables.DataTable(tablaContainer, {
+            data: {
+                headings: ['ID', 'Nombre', 'Precio', 'Cantidad', 'Bol_pago', 'Fecha', 'Pagar'],
+                data: datos.map(({ id_cuenta, nombre_p, precio_p, cantidad, bol_pago, fecha, tool }) => {
+                    // Agregar un botón de acción (Editar) a cada fila
+                    const button = `<button class="btn-pagado" onclick="cambiarEstadoBoleta(${id_cuenta})">Pagar</button>`;
+                    
+                    return [id_cuenta, nombre_p, precio_p, cantidad, bol_pago ? "Pagada" : "No pagada", fecha, button];
+                }),
+            },
+            language: idiomaEspanol,
+        });
+        
+        // Puedes personalizar la configuración según tus necesidades
+        // Por ejemplo, si deseas habilitar la búsqueda:
+        // const tabla = new simpleDatatables.DataTable(tablaContainer, { search: true });
+        
+    
+    } catch (error) {
+        console.error('Error al construir y agregar la tabla:', error);
+    
+        const tablaContainer = document.getElementById('datatablesSimple');
+    
+        if (tablaContainer) {
+            new simpleDatatables.DataTable(tablaContainer);
+        }
+    }
 }
 async function cambiarEstadoBoleta(id){
     console.log(id);
@@ -80,7 +82,7 @@ async function cambiarEstadoBoleta(id){
 
         const data = await response.json();
         console.log("Respuesta del servidor:" ,data );
-        
+        construirYAgregarTabla();
         return data;
     } catch(error){
         console.error("Errorcito: ", error);
