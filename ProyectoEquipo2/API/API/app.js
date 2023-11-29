@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const ReporteRoutes = require('./Routes/ReporteRoutes');
 const UserRoutes = require('./Routes/UserRoutes');
 const CuentaRoutes = require('./Routes/CuentaRoutes')
 const PedidoRoutes = require('./Routes/PedidoRoutes')
@@ -17,6 +18,7 @@ app.use((req, res, next) => {
 app.use('/api', UserRoutes);
 app.use('/api', CuentaRoutes)
 app.use('/api', PedidoRoutes)
+app.use('/api', ReporteRoutes)
 const PORT = process.env.PORT;
 
 app.listen(PORT, () => {

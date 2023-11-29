@@ -1,6 +1,6 @@
 const pool = require("../config/db");
 
-class ReportesService{
+class ReporteService{
     constrcutor(){
 
     }
@@ -51,17 +51,37 @@ class ReportesService{
                             EXTRACT(MONTH FROM fecha) = $1`;
         try{
             let {rows} = await pool.query(query, [mes]);
-            console.info("Total No Pagado: ", rows[0])
+            console.info("Total: ", rows[0])
             return rows[0]
         }   
         catch(error){
-            console.error("ERROR No Pagado", error);
+            console.error("ERROR", error);
         }
+    }
+
+    async GetReporte(mes, gastosMes){
+        var reportesPagados = await this.GetReportePagados(mes);
+        var reportesNoPagados = await this.GetReporteNoPagados(mes);
+        var total_ventas = await this.GetReporteMes(mes);
+        var resultado = reportesPagados - reportesNoPagados;
+        var resultado_terminal = resultado - gastosMes;
+        console.log("Reporte Pagados: ", reportesPagados);
+        console.log("Reporte No Pagados: ", reportesNoPagados);
+        console.log("Reporte Valor Ventas: ", total_ventas);
+        console.log("Reporte Pagadas - No Pagadas: ", resultado);
+        console.log("Reporte Gastos Mes: ", gastosMes);
+        console.log("Reporte Total Mes: ", resultado_terminal);
+        const response = {
+            pagadas: reportesPagados.total_mes,
+            no_pagadas: reportesNoPagados.total_mes_no,
+            total_ventas: total_ventas,
+            resultado: resultado,
+            resultado_terminal: resultado_terminal,
+            mes: mes, 
+        };
+        return response;
     }
 
 }
 
-
-
-
-module.exports = ReportesService;
+module.exports = ReporteService;

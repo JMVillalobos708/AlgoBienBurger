@@ -6,7 +6,7 @@ class Login{
     }
     async iniciarSesion(nombre, password){
         if (!this.isLogginOn){
-            const apiUrl = 'http://127.0.0.1:5200/api/user/login'; // Reemplaza con la ruta correcta
+            const apiUrl = 'https://apiburger.onrender.com/api/user/login'; // Reemplaza con la ruta correcta
             const data ={
                 username: nombre,
                 password: password

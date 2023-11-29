@@ -84,7 +84,7 @@ function realizarCompra(){
     }
     console.log("La cuenta es: ", cuenta);
     console.log("Los pedidos son: ", pedidos);
-    const url = 'http://127.0.0.1:5200/api/cuenta';
+    const url = 'https://apiburger.onrender.com/api/cuenta';
     const data = cuenta;
 
     fetch(url, {
