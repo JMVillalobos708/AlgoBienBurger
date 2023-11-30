@@ -34,7 +34,7 @@ async function construirYAgregarTabla(data) {
                 return [pagadas, no_pagadas, total_ventas, resultado, mes, resultado_terminal];
             }));
             tabla.refresh();
-            tabla.update(measureWidths=false);
+            tabla.update();
         }
        
         
