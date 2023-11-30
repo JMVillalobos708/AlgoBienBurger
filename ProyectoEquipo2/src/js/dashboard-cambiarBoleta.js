@@ -1,6 +1,6 @@
 
 async function obtenerPedidos() {
-    const url = 'https://apiburger.onrender.com/api/pedido';
+    const url = 'https://api-algobienburger.onrender.com/api/pedido';
 
     try {
         const response = await fetch(url, {
@@ -20,7 +20,7 @@ async function obtenerPedidos() {
 }
 async function cambiarEstadoBoleta(id){
     console.log(id);
-    const url = `https://apiburger.onrender.com/api/pedido/${id}`;
+    const url = `https://api-algobienburger.onrender.com/api/pedido/${id}`;
     try {
 
         const response = await fetch(url, {

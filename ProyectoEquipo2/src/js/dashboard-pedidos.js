@@ -3,7 +3,7 @@ import {Login} from './services/login.js'
 const _LocalStorage = new LocalStorage()
 const login = new Login();
 async function obtenerPedidos() {
-    const url = 'https://apiburger.onrender.com/api/pedido';
+    const url = 'https://api-algobienburger.onrender.com/api/pedido';
 
     try {
         const response = await fetch(url, {
