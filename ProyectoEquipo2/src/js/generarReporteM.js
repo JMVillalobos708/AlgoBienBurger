@@ -3,12 +3,13 @@ import {Login} from './services/login.js'
 const _LocalStorage = new LocalStorage()
 const login = new Login();
 
-async function construirYAgregarTabla() {
+async function construirYAgregarTabla(data) {
     try {
         //const datos = await obtenerPedidos();
 
-        const datos = [{pagadas: 1, no_pagadas: 3, total_ventas: 4, resultado: 3, mes: 12, total: 5}]; 
-
+        //const datos = [{pagadas: 1, no_pagadas: 3, total_ventas: 4, resultado: 3, mes: 12, total: 5}]; 
+        const datos = [data];
+        console.info(datos);
         const tablaContainer = document.getElementById('tablaReporte');
 
     
@@ -40,8 +41,26 @@ async function construirYAgregarTabla() {
         }
     }
 }
-
-window.addEventListener('DOMContentLoaded', construirYAgregarTabla);
+async function generarReporte(){
+    const gastosMes = document.getElementById("gastosDelMes").value;
+    const mes_box = document.getElementById("mesesSelect").value;
+    const datos = {
+        "mes": mes_box;
+        "gastosMes": gastosMes
+    }
+    const configuration = {
+        method: "POST",
+        body: JSON.stringify(datos),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }
+    const response = await fetch("http://127.0.0.1:5200/api/reporte", configuration);
+    const data = await response.json();
+    console.log(data);
+    construirYAgregarTabla(data);
+}
+// window.addEventListener('DOMContentLoaded', construirYAgregarTabla);
 const user = JSON.parse(_LocalStorage.get("user"));
 if (user != null){
     const user_entry = document.getElementById("user-entry");
@@ -49,6 +68,6 @@ if (user != null){
     user_entry.innerHTML = user.username;
 }
 console.log("JS VINCULADO")
-
+const btnGenerar = document.getElementById("btn-generar-reporte").addEventListener('click', generarReporte);
 const btnCerrarSesion = document.getElementById("btn-cerrar-sesion").addEventListener('click', login.cerrarSesion);
 
