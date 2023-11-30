@@ -45,7 +45,7 @@ async function generarReporte(){
     const gastosMes = document.getElementById("gastosDelMes").value;
     const mes_box = document.getElementById("mesesSelect").value;
     const datos = {
-        "mes": mes_box;
+        "mes": mes_box,
         "gastosMes": gastosMes
     }
     const configuration = {
