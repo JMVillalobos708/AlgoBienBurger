@@ -3,7 +3,7 @@ import {Login} from './services/login.js'
 const _LocalStorage = new LocalStorage()
 const login = new Login();
 async function obtenerReportes() {
-    const url = 'https://apiburger.onrender.com/api/reporte';
+    const url = 'http://127.0.0.1:5200/api/reporte';
 
     try {
         const response = await fetch(url, {
