@@ -33,10 +33,10 @@ async function construirYAgregarTabla() {
         // Crear la tabla con simple-datatables
         const tabla = new simpleDatatables.DataTable(tablaContainer, {
             data: {
-                headings: ['Pagadas', 'No pagadas', 'Total Ventas', 'Resultado', 'Mes', 'Total'],
-                data: datos.map(({ pagadas, no_pagadas, total_ventas, resultado, mes, resultado_terminal }) => {
+                headings: ['ID', 'Pagadas', 'No pagadas', 'Total Ventas', 'Total Reporte', 'Gastos Mes', 'Total Final', 'Mes', 'Fecha'],
+                data: datos.map(({ id_reporte, total_pagado, total_no_pagado, total_en_ventas, total_reporte, gastos_mes, total_final, mes, fecha }) => {
                     
-                    return [pagadas, no_pagadas, total_ventas, resultado, mes, resultado_terminal];
+                    return [id_reporte, total_pagado, total_no_pagado, total_en_ventas, total_reporte, gastos_mes, total_final, mes, fecha];
                 }),
             },
 
