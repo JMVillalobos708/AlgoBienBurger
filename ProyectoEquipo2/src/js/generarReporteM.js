@@ -7,9 +7,9 @@ var tabla;
 async function construirYAgregarTabla(data) {
     try {
         //const datos = await obtenerPedidos();
+        const datos = [data];
         if (!tabla){
             //const datos = [{pagadas: 1, no_pagadas: 3, total_ventas: 4, resultado: 3, mes: 12, total: 5}]; 
-            const datos = [data];
             console.info(datos);
             const tablaContainer = document.getElementById('tablaReporte');
 
