@@ -41,7 +41,7 @@
         e.preventDefault();
       
 
-        const apiUrl = 'http://127.0.0.1:5200/api/user'; // Reemplaza con la ruta correcta
+        const apiUrl = 'https://apiburger.onrender.com/api/user'; // Reemplaza con la ruta correcta
 
         // Realiza una solicitud GET al servidor
         fetch(apiUrl)
@@ -74,7 +74,7 @@
         const typeInput = parseInt(document.getElementById('typeInput').value);
 
         try{
-          const response = await fetch('http://127.0.0.1:5200/api/user', {
+          const response = await fetch('https://apiburger.onrender.com/api/user', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
