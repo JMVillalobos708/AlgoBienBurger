@@ -1,6 +1,6 @@
 //Codigo de Javascript para conectar index (logica del login) con el frontend;
-import {Login} from '../services/login.js' 
-import {LocalStorage} from '../services/localstorage.js'
+import {Login} from './services/login.js' 
+import {LocalStorage} from './services/localstorage.js'
 const btnIniciarSesion = document.getElementById("btnLogin");
 const btnDashBoard = document.getElementById("dashboard-btn");
 const btnLogIn = document.getElementById("login");
