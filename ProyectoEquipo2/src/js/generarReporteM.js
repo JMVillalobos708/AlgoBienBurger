@@ -17,9 +17,9 @@ async function construirYAgregarTabla(data) {
         const tabla = new simpleDatatables.DataTable(tablaContainer, {
             data: {
                 headings: ['Pagadas', 'No pagadas', 'Total Ventas', 'Resultado', 'Mes', 'Total'],
-                data: datos.map(({ pagadas, no_pagadas, total_ventas, resultado, mes, total }) => {
+                data: datos.map(({ pagadas, no_pagadas, total_ventas, resultado, mes, resultado_terminal }) => {
                     
-                    return [pagadas, no_pagadas, total_ventas, resultado, mes, total];
+                    return [pagadas, no_pagadas, total_ventas, resultado, mes, resultado_terminal];
                 }),
             },
             search: false,
@@ -42,6 +42,7 @@ async function construirYAgregarTabla(data) {
     }
 }
 async function generarReporte(){
+    console.log
     const gastosMes = document.getElementById("gastosDelMes").value;
     const mes_box = document.getElementById("mesesSelect").value;
     const datos = {
