@@ -68,7 +68,7 @@ async function generarReporte(){
             "Content-Type": "application/json"
         }
     }
-    const response = await fetch("https://api-algobienburger.onrender.com/api/reporte", configuration);
+    const response = await fetch("https://apiburger.onrender.com/api/reporte", configuration);
     const data = await response.json();
     console.log(data);
     reportesList.push(data);

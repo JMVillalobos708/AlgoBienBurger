@@ -84,7 +84,7 @@ function realizarCompra(){
     }
     console.log("La cuenta es: ", cuenta);
     console.log("Los pedidos son: ", pedidos);
-    const url = 'https://api-algobienburger.onrender.com/api/cuenta';
+    const url = 'https://apiburger.onrender.com/api/cuenta';
     const data = cuenta;
 
     fetch(url, {
