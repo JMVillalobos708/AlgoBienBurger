@@ -29,7 +29,12 @@ async function construirYAgregarTabla(data) {
         }
         else{
             console.log("Agregando datos a la tabla");
-            tabla.rows().add([data]);
+            tabla.insert(datos.map(({ pagadas, no_pagadas, total_ventas, resultado, mes, resultado_terminal }) => {
+                        
+                return [pagadas, no_pagadas, total_ventas, resultado, mes, resultado_terminal];
+            }));
+            tabla.refresh();
+            tabla.update(measureWidths=false);
         }
        
         
